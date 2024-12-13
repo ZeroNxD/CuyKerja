@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CategoriesController extends Controller
 {
     public function ShowPage(){
-        return view('Page.CategoriesPage');
+        $allcategories = Category::all();
+        
+        return view('Page.CategoriesPage', compact('allcategories'));
     }
 }

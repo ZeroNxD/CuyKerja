@@ -197,7 +197,6 @@
         width: 100%; 
         max-width: 100%; 
         overflow: hidden; 
-        margin: 20px;
     }
 
     .featurejob h1{
