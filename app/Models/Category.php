@@ -12,6 +12,6 @@ class Category extends Model
     protected $guarded = [];
     
     public function hirejobs(){
-        return $this->belongsTo(HireJob::class);
+        return $this->hasMany(HireJob::class, 'categories_id');
     }
 }

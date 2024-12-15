@@ -12,4 +12,5 @@ class HomeController extends Controller
         $alljobs = HireJob::with('users.companies')->paginate(4);
         return view('Page.HomePage', compact('alljobs'));
     }
+
 }

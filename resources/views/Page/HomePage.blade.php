@@ -62,7 +62,7 @@
                                 <p>Salary Range: Rp {{$jobs->salary_min}} - Rp {{$jobs->salary_max}}</p>
                                 <p>Hirer: {{$jobs->users->name}}</p>
                                 <p>Companies: {{$jobs->users->companies->Nama_Perusahaan}}</p>
-                                <button>Check Detail</button>
+                                <button onclick="window.location.href='{{ route('detail.job', ['id' => $jobs->id, 'from' => 'home']) }}'">Check Detail</button>
                             </div>
                         </div>
                     </div>

@@ -5,8 +5,8 @@
 @section('Content')
     <nav class="navbar bg-body-tertiary">
         <div class="container-fluid" style="justify-content: center">
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" style="width:500px;" type="search" placeholder="Search A Job List" aria-label="Search">
+            <form class="d-flex" role="search" method="GET" action="{{ route('job.list') }}">
+                <input class="form-control me-2" style="width:500px;" name="search" type="search" placeholder="Search A Job List" aria-label="Search" value="{{ request('search') }}">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
         </div>
@@ -27,7 +27,7 @@
                                 <p>💵: Rp {{$jobs->salary_min}} - Rp {{$jobs->salary_max}}</p>
                                 <p>🧑‍💼: {{$jobs->users->name}}</p>
                                 <p>🏢: {{$jobs->users->companies->Nama_Perusahaan}}</p>
-                                <button>Check Detail</button>
+                                <button onclick="window.location.href='{{ route('detail.job', ['id' => $jobs->id, 'from' => 'list']) }}'">Check Detail</button>
                             </div>
                         </div>
                     </div>

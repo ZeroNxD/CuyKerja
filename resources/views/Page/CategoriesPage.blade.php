@@ -5,8 +5,8 @@
 @section('Content')
     <nav class="navbar bg-body-tertiary">
         <div class="container-fluid" style="justify-content: center;">
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" style="width:500px;" type="search" placeholder="Search A Category" aria-label="Search">
+            <form class="d-flex" role="search" method="GET" action="{{ route('categories.list') }}">
+                <input class="form-control me-2" style="width:500px;" name='search' type="search" placeholder="Search A Category" aria-label="Search" value="{{ request('search') }}">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
         </div>
@@ -24,7 +24,7 @@
                                 <div class="textsection col-12 col-md-7">
                                     <h2>{{$category->nama}}</h2>
                                     <p>""{{$category->descriptions}}""</p>
-                                    <button>Check List Job</button>
+                                    <button onclick="window.location.href='{{ route('categories.job', ['id' => $category->id, 'from' => 'category']) }}'">Check Detail</button>
                                 </div>
                             </div>
                         </div>

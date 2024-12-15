@@ -16,11 +16,11 @@ class HireJob extends Model
     }
 
     public function categories(){
-        return $this->hasMany(Category::class, 'categories_id');
+        return $this->belongsTo(Category::class, 'categories_id');
     }
 
     public function jobtypes(){
-        return $this->hasMany(JobType::class, 'types_id');
+        return $this->belongsTo(JobType::class, 'types_id');
     }
 
     public function applicants(){
