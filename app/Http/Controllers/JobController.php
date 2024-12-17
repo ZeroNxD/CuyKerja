@@ -97,24 +97,64 @@ class JobController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(HireJob $ListJob)
     {
-        //
+        $alltypes = JobType::all();
+        $allusers = User::where('roles_id', 2)->with('companies')->get();
+        $allcategories = Category::all();
+        
+        return view('hirer.edit', compact('alltypes', 'allusers', 'allcategories', 'ListJob'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, HireJob $ListJob)
     {
-        //
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'types_id' => 'required',
+            'categories_id' => 'required',
+            'employer_id' => 'required',
+            'description' => 'required|string',
+            'location' => 'required|string',
+            'salary_min' => 'required|numeric',
+            'salary_max' => 'required|numeric',
+            'requirements' => 'required',
+            'responsibilities' => 'required',
+            'job_status' => 'required|string',
+            'deadline' => 'required|numeric',
+        ]);
+
+        if($request->hasFile('logo')){
+            $logoPath = $request->file('logo')->store('assets', 'public');
+            $ListJob->Logo = $logoPath; 
+        }
+
+        $ListJob->job_title = $request->input('title');
+        $ListJob->types_id = $request->input('types_id');
+        $ListJob->categories_id = $request->input('categories_id');
+        $ListJob->employer_id = $request->input('employer_id');
+        $ListJob->job_description = $request->input('description');
+        $ListJob->location = $request->input('location');
+        $ListJob->salary_min = $request->input('salary_min');
+        $ListJob->salary_max = $request->input('salary_max');
+        $ListJob->requirements = $request->input('requirements');
+        $ListJob->responsibilities = $request->input('responsibilities');
+        $ListJob->status = $request->input('job_status');
+        $ListJob->deadline = now()->addDays((int) $request->input('deadline'));
+        $ListJob->posted_at = now(); 
+        $ListJob->save();
+
+        return redirect()->route('ListJob.index')->with('success', 'Jobs Data successfully updated!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(HireJob $ListJob)
     {
-        //
+        $ListJob->delete();
+        return redirect()->route('ListJob.index')->with('success', 'Jobs Has Been Removed!');
     }
 }

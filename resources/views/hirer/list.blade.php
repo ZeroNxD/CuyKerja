@@ -46,8 +46,8 @@
                     @endif
                 </td>
                 <td>
-                    <a href="" class="btn btn-warning">Edit</a>
-                    <form action="" method="post">
+                    <a href="{{ route('ListJob.edit', $jobs->id )}}" class="btn btn-warning">Edit</a>
+                    <form action="{{ route('ListJob.destroy' , $jobs->id)}}" method="post">
                         @csrf 
                         @method('DELETE')
                         <button type="submit" class="btn-danger">Delete</button>
