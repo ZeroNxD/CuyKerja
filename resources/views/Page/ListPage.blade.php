@@ -18,7 +18,7 @@
                     <div class="col-12 col-md-6 mb-4">
                         <div class="row align-items-center bg-dark-subtle bg-gradient" style="padding-top: 40px; padding-right:20px; width:1300px; border:1px solid gray;">
                             <div class="overlay col-12 col-md-5">
-                                <img src="{{ asset($jobs->Logo)}}" alt="{{$jobs->job_title}}" class="img-fluid" style="border-radius:10px;">
+                                <img src="{{$jobs->Logo ? asset('storage/' . $jobs->Logo) : asset($jobs->Logo)}}" alt="Logo Job" class="img-fluid" style="border-radius:10px;">
                             </div>
                             <div class="textsection col-12 col-md-7">
                                 <h2>{{$jobs->job_title}}</h2>

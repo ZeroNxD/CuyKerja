@@ -26,5 +26,4 @@ class HireJob extends Model
     public function applicants(){
         return $this->hasMany(Applicant::class, 'job_id');
     }
-
 }

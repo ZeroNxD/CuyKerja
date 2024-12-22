@@ -1,7 +1,7 @@
 <style>
 
     .main{
-        background: #deded9;
+        background: #f7f7f7;
     }
 
     .image-container {

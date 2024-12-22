@@ -15,7 +15,7 @@
 
     <h1 style="text-align: center; margin-top: 20px; font-weight: bold; margin-top:120px;">Meet Our Teams</h1>
     <div class="row" style="text-align: center; margin-top: 10px; padding:20px;">
-        <div class="col-4" style="background: #dedede; padding:30px; border-radius:20px;">
+        <div class="col-4" style="background: #fcfcfc; padding:30px; border-radius:20px;">
             <img src="{{asset('assets/Ivan.jpg')}}" alt="" style="width:250px; height:250px; object-fit: cover; border-radius:50%;">
             <h1 style="font-weight: bold; font-style: italic;">Ivan Afrizal</h1>
             <h2 style="font-size:20px;">2602175815</h2>
@@ -24,7 +24,7 @@
             <h4 style='font-size:20px;'>📧 : @gmail.com </h4>
         </div>
 
-        <div class="col-4" style="background: #dedede; padding:30px; border-radius:20px;">
+        <div class="col-4" style="background: #fcfcfc; padding:30px; border-radius:20px;">
             <img src="{{asset('assets/Kevin.jpg')}}" alt="" style="width:250px; height:250px; object-fit: cover; border-radius:50%;">
             <h1 style="font-weight: bold; font-style: italic;">Kevin Petersen</h1>
             <h2 style="font-size:20px;">2602136713</h2>
@@ -33,7 +33,7 @@
             <h4 style='font-size:20px;'>📧 : petersenkevin123@gmail.com </h4>
         </div>
         
-        <div class="col-4" style="background: #dedede; padding:30px; border-radius:20px;">
+        <div class="col-4" style="background: #fcfcfc; padding:30px; border-radius:20px;">
             <img src="{{asset('assets/Nicholas.jpg')}}" alt="" style="width:250px; height:250px; object-fit: cover; border-radius:50%;">
             <h1 style="font-weight: bold; font-style: italic;">Nicholas Wenderlim</h1>
             <h2 style="font-size:20px;">2602144942</h2>

@@ -10,10 +10,12 @@
 
     <div class="UserBox">
         <img src="{{asset('assets/Employer.png')}}" alt="Logo Employer Umum">
+        @auth
         <div class="UserInformation">
-            <h1>Welcome Hirer,   {{$alluser[0]->name}}</h1>
-            <h2>Company 🏢 : {{$alluser[0]->companies->Nama_Perusahaan}}</h2>
+            <h1>Welcome Hirer,   {{auth()->user()->name}}</h1>
+            <h2>Company 🏢 : {{auth()->user()->companies->Nama_Perusahaan}}</h2>
         </div>
+        @endauth
     </div>
 
     <div class="ButtonList">

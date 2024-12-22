@@ -12,9 +12,9 @@ class ListController extends Controller
 
         if($search){
             $alljobs = HireJob::with('users.companies')->where('job_title', 'like', "%{$search}%")->orWhere('job_description', 'like', "%{$search}%")
-            ->orWhere('requirements', 'like', "%{$search}%")->get();
+            ->orWhere('requirements', 'like', "%{$search}%")->where('status', 'Open')->get();
         } else {
-            $alljobs = HireJob::with('users.companies')->get();
+            $alljobs = HireJob::with('users.companies')->where('status', 'Open')->get();
         }
 
         return view('Page.ListPage', compact('alljobs'));

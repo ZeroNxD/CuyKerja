@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\User;
 use App\Models\HireJob;
 use App\Models\JobType;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 
 // Tugasnya melakukan handling terhadap data-data yang ingin diberikan konsep CRUD [Create Read Update Delete]
@@ -23,7 +24,9 @@ class JobController extends Controller
 
     public function index()
     {
-        $alljobs = HireJob::with('users.companies')->get();
+        $alljobs = HireJob::with('users.companies')
+                    ->where('employer_id', auth()->user()->id)
+                    ->get();
         return view('hirer.list', compact('alljobs'));
     }
 
@@ -44,7 +47,7 @@ class JobController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
+    {   
         $request->validate([
             'title' => 'required|string|max:255',
             'types_id' => 'required',
@@ -58,7 +61,9 @@ class JobController extends Controller
             'responsibilities' => 'required',
             'job_status' => 'required|string',
             'deadline' => 'required|numeric',
+            'logo' => 'file|mimes:jpg,jpeg,png',
         ]);
+
 
         if($request->hasFile('logo')){
             $logoPath = $request->file('logo')->store('assets', 'public');
@@ -110,7 +115,12 @@ class JobController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, HireJob $ListJob)
-    {
+    {   
+        // Make Sure yang login itu ownernya
+        // if($ListJob->employer_id != auth()->id()){
+        //     abort(403, "Unauthorized Action");
+        // }
+
         $request->validate([
             'title' => 'required|string|max:255',
             'types_id' => 'required',
@@ -124,6 +134,7 @@ class JobController extends Controller
             'responsibilities' => 'required',
             'job_status' => 'required|string',
             'deadline' => 'required|numeric',
+            'logo' => 'file|mimes:jpg,jpeg,png',
         ]);
 
         if($request->hasFile('logo')){
@@ -153,7 +164,12 @@ class JobController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(HireJob $ListJob)
-    {
+    {   
+        // Make Sure yang login itu ownernya
+        // if($ListJob->employer_id != auth()->id()){
+        //     abort(403, "Unauthorized Action");
+        // }
+        
         $ListJob->delete();
         return redirect()->route('ListJob.index')->with('success', 'Jobs Has Been Removed!');
     }

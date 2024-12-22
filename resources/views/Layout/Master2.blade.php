@@ -12,6 +12,12 @@
         @include('Layout.menubar2')
     </div>
 
+    @if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+    @endif
+
     @yield('Content')
 
     <div class="container-fluid" style="padding: 3px">

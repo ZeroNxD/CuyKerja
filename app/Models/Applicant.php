@@ -13,11 +13,11 @@ class Applicant extends Model
 
 
     public function hirejobs(){
-        return $this->belongsTo(HireJob::class);
+        return $this->belongsTo(HireJob::class, 'job_id');
     }
 
     public function users(){
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'jobseeker_id');
     }
 
 }

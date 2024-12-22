@@ -52,7 +52,7 @@ class JobSeeder extends Seeder
         HireJob::create([
             'employer_id' => 2,
             'types_id' => 3,
-            'Logo' => 'assets/UI.png',
+            'Logo' => 'assets/Marketing.png',
             'job_title' => 'Marketing Product Sales',
             'job_description' => 'Try to sell product of companies more frequently',
             'location' => 'Pekanbaru',

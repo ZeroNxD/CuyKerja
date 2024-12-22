@@ -18,11 +18,28 @@
             <li class="nav-item px-4">
                 <a href="/CuyKerja/AboutUs" class="{{request()->is('CuyKerja/AboutUs') ? 'nav-link fw-bold active': 'nav-link fw-bold'}}">About Us</a>
             </li>
+
+            <li class="nav-item px-4">
+                <a href="{{route('Applicant.index')}}" class="{{request()->is('CuyKerja/Applicant') ? 'nav-link fw-bold active': 'nav-link fw-bold'}}">History Applied Jobs</a>
+            </li>
         </ul>
     </div>
 
-    <button class="btn custom-login-btn" onclick="window.location.href='/CuyKerja/Register'">Register</button>
-    <button class="btn custom-login-btn" onclick="window.location.href='/CuyKerja/SignIn'">Login</button>
+    @auth
+        {{-- Untuk JobSeeker --}}
+        <h3 style="font-size: 15px; font-weight: bold;">
+            Welcome, {{auth()->user()->name}}
+        </h3>
+
+        <form action="{{route('logout')}}" method='post' class="inline">
+            @csrf
+            <button type="submit" class="btn custom-login-btn">Logout</button>
+        </form>
+    @else
+        <button class="btn custom-login-btn" onclick="window.location.href='/CuyKerja/Register'">Register</button>
+        <button class="btn custom-login-btn" onclick="window.location.href='/CuyKerja/Login'">Login</button>
+    @endauth
+
   </div>
 </nav>
 
@@ -47,6 +64,8 @@
         cursor: pointer; 
         transition: all 0.3s ease; 
         margin: 10px;
+        margin-top: 20px;
+        margin-left: 20px;
     }
 
     .custom-login-btn:hover {

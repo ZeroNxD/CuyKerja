@@ -12,7 +12,12 @@ class CompanySeeder extends Seeder
      * Run the database seeds.
      */
     public function run(): void
-    {
+    {   
+        Company::create([
+            'Nama_Perusahaan' => "None",
+            'description' => "None"
+        ]);
+
         Company::create([
             'Nama_Perusahaan' => "Bina Nusantara University",
             'description' => "BINUS itu mudah dan menyenangkan bukan"

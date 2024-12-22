@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function ShowPage(){
-        $alljobs = HireJob::with('users.companies')->paginate(4);
+        $alljobs = HireJob::with('users.companies')->where('status', 'Open')->paginate(4);
         return view('Page.HomePage', compact('alljobs'));
     }
 

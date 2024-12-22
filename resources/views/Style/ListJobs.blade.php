@@ -7,6 +7,8 @@
     .table img{
         width: 80%;
         height: 80%;
+        max-width: 300px;
+        max-height: 400px;
     }
 
     .table th {

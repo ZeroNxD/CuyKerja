@@ -21,7 +21,9 @@ class CategoriesController extends Controller
     }
 
     public function ListJob($id, Request $request){
-        $categoriesjob = Category::with('hirejobs.users.companies')->find($id);
+        $categoriesjob = Category::with(['hirejobs' => function($query) {
+            $query->where('status', 'Open');
+        }, 'hirejobs.users.companies'])->find($id);
         $fromPage = $request->query('from');
         if($categoriesjob){
             return view('Page.ListCategoriesJob', compact('categoriesjob', 'fromPage'));

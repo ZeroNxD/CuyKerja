@@ -41,5 +41,17 @@ class UserSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
         ]);
+
+        User::create([
+            'name' => "Admin Utama",
+            'email' => "admin@gmail.com",
+            'password' => Hash::make('password'),
+            'roles_id' => 3,
+            'companies_id' => 1,
+            'email_verified_at' => now(),
+            'remember_token' => Str::random(50),
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
     }
 }

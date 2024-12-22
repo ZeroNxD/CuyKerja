@@ -3,11 +3,6 @@
 @section('title', 'List Job')
 
 @section('Content')
-    @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
     <div class="header">
         <button onclick="window.location.href='{{ route('ListJob.create')}}'">Add New Job</button>
     </div>
@@ -60,3 +55,16 @@
 @endsection
 
 @include('Style.ListJobs')
+
+<style>
+    html, body {
+        height: 100%;
+        margin: 0;
+    }
+
+    footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+</style>

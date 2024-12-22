@@ -44,12 +44,11 @@
                     @endforeach
                 </select>
 
-                <label for="">Job Employer</label>
-                <select name="employer_id" id="">
-                    @foreach($allusers as $option)
-                        <option value="{{ $option->id }}" {{$ListJob->employer_id == $option->id ? 'selected' : ''}}>{{ $option->name}}</option>
-                    @endforeach
-                </select>
+                @auth
+                    <label for="">Job Employer</label>
+                    <input class="form-control" type="text" value="{{ auth()->user()->name }}" readonly>
+                    <input type="hidden" name="employer_id" value="{{ auth()->user()->id }}">
+                @endauth
 
                 <label for="">Job Description</label>
                 <textarea class="form-control" name="description" rows="4" placeholder="Enter job description here" aria-label="" >{{ $ListJob->job_description }}</textarea>

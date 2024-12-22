@@ -9,9 +9,17 @@
     < Back to {{ $fromPage == 'list' ? 'List' : ($fromPage == 'category' ? 'Category' : 'Home') }}
     </a>
 
+    @if($errors->any())
+        <div class="alert alert-danger" style="margin-top: 20px;">
+            @foreach($errors->all() as $error)
+                <h1 style="font-weight: bold; font-size: 20px; margin-left: 20px;">{{ $error }}</h1>
+            @endforeach
+        </div>
+    @endif
+
     <div class="detailjob">
         <div class="details2">
-            <img src="{{ asset($job->Logo)}}" alt="{{ asset($job->job_title)}}">
+            <img src="{{$job->Logo ? asset('storage/' . $job->Logo) : asset($job->Logo)}}" alt="Logo Job">
             <h1>{{$job->job_title}}</h1>
             <h2>📌: {{$job->location}}</h2>
             <h2>💵 : Rp.{{$job->salary_min}} - Rp.{{$job->salary_max}}</h2>
@@ -27,7 +35,10 @@
         <p>{{$job->requirements}}</p>
         <h2 style="font-size: 30px; font-weight: bold; margin-top: 20px; font-style: italic;">Responsibilities: </h2>
         <p>{{$job->responsibilities}}</p>
-        <button>Apply Now</button>
+        <form action="{{ route('Applicant.create', ['job_id' => $job->id]) }}" method="GET" style="margin-top: 20px;">
+            <button type='submit'>Apply Now</button>
+        </form>
+        
     </div>
 
 @endsection
