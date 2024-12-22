@@ -12,7 +12,7 @@ class Role extends Model
     protected $guarded = [];
 
     public function users(){
-        return $this->belongsTo(User::class);
+        return $this->hasOne(User::class);
     }
 
 }

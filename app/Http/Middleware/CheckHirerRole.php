@@ -18,10 +18,6 @@ class CheckHirerRole
      */
     public function handle(Request $request, Closure $next): Response
     {
-        // if (Auth::check() && Auth::user()->roles_id == 3) {
-            
-        // }
-        
         if (Auth::check() && Auth::user()->roles_id == 2) {
             return $next($request);
         }
@@ -30,6 +26,10 @@ class CheckHirerRole
             return redirect()->route('home');
         }
 
-        return redirect('/'); // Pengguna lain diarahkan ke halaman default
+        if (Auth::check() && Auth::user()->roles_id == 3) {
+            return redirect()->route('admin.users');
+        }
+
+        return redirect('/CuyKerja'); 
     }
 }

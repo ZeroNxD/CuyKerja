@@ -112,9 +112,12 @@ class ApplicantController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Applicant $applicant)
+    public function destroy($id)
     {
+
+        $applicant = Applicant::find($id);
+        
         $applicant->delete();
-        return redirect()->route("")->with('success', 'Applicant Has Been Removed!');
+        return redirect()->route("admin.applicants")->with('success', 'Applicant Has Been Removed!');
     }
 }

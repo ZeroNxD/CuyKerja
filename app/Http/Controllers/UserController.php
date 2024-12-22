@@ -31,7 +31,7 @@ class UserController extends Controller
             } elseif ($user->roles_id == 2) { // Hirer
                 return redirect()->route('hirer.home')->with('success', 'Welcome, Hirer!');
             } elseif ($user->roles_id == 3) { // Admin
-                return redirect()->route('admin.dashboard')->with('success', 'Welcome, Admin!');
+                return redirect()->route('admin.users')->with('success', 'Welcome, Admin!');
             }
 
             return redirect('/CuyKerja')->with('success', 'Welcome!');
@@ -94,5 +94,12 @@ class UserController extends Controller
         $newcompany->save();
 
         return redirect()->route('register')->with('success', 'New Company Added');
+    }
+
+    public function DeleteUser($id){
+        $user = User::find($id);
+
+        $user->delete();
+        return redirect()->route('admin.users')->with('success', 'User deleted successfully.');
     }
 }

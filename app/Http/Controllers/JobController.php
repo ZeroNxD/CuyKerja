@@ -8,6 +8,7 @@ use App\Models\JobType;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 
 
 // Tugasnya melakukan handling terhadap data-data yang ingin diberikan konsep CRUD [Create Read Update Delete]
@@ -165,12 +166,19 @@ class JobController extends Controller
      */
     public function destroy(HireJob $ListJob)
     {   
-        // Make Sure yang login itu ownernya
-        // if($ListJob->employer_id != auth()->id()){
+        // if ($ListJob->employer_id != auth()->id() && !auth()->user()->is_admin) {
         //     abort(403, "Unauthorized Action");
         // }
+        $user = Auth::user();
         
         $ListJob->delete();
-        return redirect()->route('ListJob.index')->with('success', 'Jobs Has Been Removed!');
+        if ($user->roles_id == 3) {
+            return redirect()->route('admin.jobs')->with('success', 'Job has been removed!');
+        }
+    
+        if ($user->roles_id == 2) {
+            return redirect()->route('ListJob.index')->with('success', 'Job has been removed!');
+        }
+
     }
 }

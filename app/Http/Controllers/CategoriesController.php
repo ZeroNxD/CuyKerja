@@ -31,4 +31,60 @@ class CategoriesController extends Controller
             abort(404);
         }
     }
+
+    public function create(){
+        return view('Admin.AdminCreateCategories');
+    }
+
+    public function store(Request $request){
+        $request->validate([
+            'Categories_Name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'logo' => 'required|mimes:jpg,jpeg,png',
+        ]);
+
+        $logoPath = $request->file('logo')->store('assets', 'public');
+
+        $newcategory = new Category();
+        $newcategory->nama = $request->input('Categories_Name');
+        $newcategory->descriptions = $request->input('description');
+        $newcategory->logo = $logoPath;
+        $newcategory->save();
+
+        return redirect()->route('admin.categories')->with('success', 'New Categories has been added');
+    }
+
+    public function edit($id){
+        $Category = Category::findOrFail($id);
+        return view('Admin.AdminEditCategories', compact('Category'));
+    }
+
+    public function update(Request $request, $id){
+
+        $category = Category::findOrFail($id);
+
+        $request->validate([
+            'Categories_Name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'logo' => 'mimes:jpg,jpeg,png',
+        ]);
+
+        $category->nama = $request->input('Categories_Name');
+        $category->descriptions = $request->input('description');
+
+        if($request->hasFile('logo')){
+            $logoPath = $request->file('logo')->store('assets', 'public');
+            $category->Logo = $logoPath; 
+        }
+
+        $category->save();
+        return redirect()->route('admin.categories')->with('success', 'Category updated successfully');
+    }
+
+    public function destroy($id){
+        $category = Category::find($id);
+        
+        $category->delete();
+        return redirect()->route('admin.categories')->with('success', 'Category deleted successfully');
+    }
 }

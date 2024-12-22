@@ -24,22 +24,47 @@
         border-radius: 5px; 
     }
 
-    button {
+    .create-job-btn {
         border: 5px solid #333333;
         background-color: #00ffb7;
         color: #000000; 
+        padding: 10px 20px; 
+        font-size: 16px; 
+        border-radius: 15px; 
+        cursor: pointer; 
+        transition: all 0.3s ease; 
+        font-weight: bold;
+    }
+
+    .create-job-btn:hover {
+        background-color: #045512; 
+        color: rgb(255, 255, 255);
+        border: 5px solid rgb(108, 107, 107);
+    }
+
+    .container {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .Back-btn {
+        display: inline-block; 
+        border: 2px solid #333333;
+        background-color: #28a745;
+        color: #ffffff; 
         padding: 10px 20px; 
         font-size: 16px; 
         border-radius: 5px; 
         cursor: pointer; 
         transition: all 0.3s ease; 
         font-weight: bold;
+        text-align: center; 
     }
 
-    button:hover {
-        background-color: #045512; 
-        color: rgb(255, 255, 255);
-        border: 5px solid rgb(108, 107, 107);
+    .Back-btn:hover {
+        background-color: #155724;
+        color: white;
+        border: 2px solid white;
     }
 
 </style>

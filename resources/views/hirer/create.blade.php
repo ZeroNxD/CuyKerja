@@ -6,6 +6,10 @@
 
     <h1 style="text-align: center; font-weight:bold; margin-top: 30px; margin-bottom: 40px;">Lets Create New Available Job in CuyKerja</h1>
     <h3 style="text-align: center; font-weight:bold; font-size: 20px;">Post a job to find a suitable candidate</h3>
+
+    <div class="container">
+        <button class="Back-btn" onclick="window.location.href='{{route('ListJob.index')}}'">Back to Job List</button>
+    </div>
     <div class="row">
         <div class="col-12" style="margin-top: 30px;">
             <form action="{{ route('ListJob.store') }}" method="post" enctype="multipart/form-data">
@@ -102,7 +106,7 @@
                     <p class="text-red-500 text-xs" style="color: red; font-weight: bold;">{{$message}}</p>
                 @enderror
             
-                <button type='submit'>Create New Jobs</button>
+                <button type='submit' class="create-job-btn">Create New Jobs</button>
             </form>
         </div>
     </div>

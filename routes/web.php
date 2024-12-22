@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JobController;
 use App\Http\Middleware\CheckHirerRole;
 use App\Http\Controllers\ApplicantController;
+use App\Http\Middleware\CheckAdminRole;
 use App\Http\Middleware\CheckJobseekerRole;
 
 Route::prefix('/CuyKerja')->group(function(){
@@ -33,6 +34,8 @@ Route::prefix('/CuyKerja')->group(function(){
 
    Route::put('Applicant/update/{id}', [Controllers\ApplicantController::class, 'update'])->name('Applicant.update');
 
+   Route::delete('Applicant/delete/{id}', [Controllers\ApplicantController::class, 'destroy'])->name('Applicant.delete');
+
    Route::get('/Categories', [Controllers\CategoriesController::class, 'ShowPage'])->name('categories.list')->middleware((CheckJobseekerRole::class)); 
 
    Route::get('/Categories/{id}', [Controllers\CategoriesController::class, 'ListJob'])->name('categories.job')->middleware((CheckJobseekerRole::class));
@@ -53,5 +56,29 @@ Route::prefix('/CuyKerja')->group(function(){
 
    Route::post('/store-company', [Controllers\UserController::class, 'StoreCompany'])->name('storeCompany');
 
-   
+   Route::prefix('Admin')->group(function () {
+      Route::get('/ListUsers', [Controllers\AdminController::class, 'ListUsers'])->name('admin.users')->middleware('auth', CheckAdminRole::class);
+
+      Route::delete('Users/{id}', [Controllers\UserController::class, 'DeleteUser'])->name('AdminUsers.delete')->middleware('auth');
+
+      Route::get('/ListApplicants', [Controllers\AdminController::class, 'ListApplicants'])->name('admin.applicants')->middleware('auth', CheckAdminRole::class);
+
+      Route::get('/ListJobs', [Controllers\AdminController::class, 'ListJobs'])->name('admin.jobs')->middleware('auth', CheckAdminRole::class);
+
+      Route::get('/ListJobs/{id}', [Controllers\AdminController::class, 'DetailJobs'])->name('admin.detailjobs')->middleware('auth', CheckAdminRole::class);
+
+      Route::get('/ListCategories', [Controllers\AdminController::class, 'ListCategories'])->name('admin.categories')->middleware('auth', CheckAdminRole::class);
+
+      Route::get('/ListCategories/Create', [Controllers\CategoriesController::class, 'create'])->name('admin.createcategories')->middleware('auth', CheckAdminRole::class);
+
+      Route::post('/ListCategories/Store', [Controllers\CategoriesController::class, 'store'])->name('admin.storecategories')->middleware('auth', CheckAdminRole::class);
+
+      Route::get('/ListCategories/edit/{id}', [Controllers\CategoriesController::class, 'edit'])->name('admin.editcategories')->middleware('auth', CheckAdminRole::class);
+
+      Route::put('/ListCategories/update/{id}', [Controllers\CategoriesController::class, 'update'])->name('admin.updatecategories')->middleware('auth', CheckAdminRole::class);
+
+      Route::delete('/ListCategories/delete/{id}', [Controllers\CategoriesController::class, 'destroy'])->name('admin.deletecategories')->middleware('auth', CheckAdminRole::class);
+   });
+
 });
+

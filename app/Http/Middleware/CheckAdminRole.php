@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class CheckJobseekerRole
+class CheckAdminRole
 {
     /**
      * Handle an incoming request.
@@ -16,22 +16,19 @@ class CheckJobseekerRole
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(!Auth::check()){
-            return $next($request);
-        }
-        
+
         if (Auth::check() && Auth::user()->roles_id == 1) {
-            return $next($request);
+            return redirect()->route('home');
         }
 
         if (Auth::check() && Auth::user()->roles_id == 2) {
-            return redirect()->route('hirer.home');
-        }
-
-        if (Auth::check() && Auth::user()->roles_id == 3) {
             return redirect()->route('admin.users');
         }
 
-        return redirect()->route('home');
+        if (Auth::check() && Auth::user()->roles_id == 3) {
+            return $next($request);
+        }
+
+        return redirect('/CuyKerja'); 
     }
 }

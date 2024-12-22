@@ -19,7 +19,7 @@
                         <div class="col">
                             <div class="row align-items-center h-100" style="border: 2px solid black; border-radius: 10px; overflow: hidden; padding: 20px;">
                                 <div class="overlay col-12 col-md-5">
-                                    <img src="{{ asset($category->logo)}}" alt="{{$category->name}}" class="img-fluid" style="border-radius:10px; border:3px solid gray;">
+                                    <img src="{{$category->logo ? asset('storage/' . $category->logo) : asset($category->logo)}}" alt="Logo Job" style="border-radius:10px; border:3px solid gray;">
                                 </div>
                                 <div class="textsection col-12 col-md-7">
                                     <h2>{{$category->nama}}</h2>
