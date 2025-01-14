@@ -6,22 +6,30 @@
   
       <div class="collapse navbar-collapse">
           <ul class="navbar-nav mx-auto">
-              <li class="nav-item px-4">
-                  <a href="/CuyKerja/Hirer" class="{{request()->is('CuyKerja/Hirer') ? 'nav-link active': 'nav-link fw-bold'}}">Home</a>
-              </li>
-              <li class="nav-item px-4">
-                  <a href="/CuyKerja/Hirer/ListJob" class="{{request()->is('CuyKerja/Hirer/ListJob') ? 'nav-link active': 'nav-link fw-bold'}}">Your Jobs List</a>
-              </li>
-
-              <li class="nav-item px-4">
-                <a href="/CuyKerja/Hirer/ListApplicant" class="{{request()->is('CuyKerja/Hirer/ListApplicant') ? 'nav-link active': 'nav-link fw-bold'}}">See Applicant List</a>
+            <li class="nav-item px-4">
+                <a href="/CuyKerja/Hirer" class="{{request()->is('CuyKerja/Hirer') ? 'nav-link active': 'nav-link fw-bold'}}">@lang('menubar2.home')</a>
+            </li>
+            <li class="nav-item px-4">
+                <a href="/CuyKerja/Hirer/ListJob" class="{{request()->is('CuyKerja/Hirer/ListJob') ? 'nav-link active': 'nav-link fw-bold'}}">@lang('menubar2.job_lists')</a>
+            </li>
+            <li class="nav-item px-4">
+                <a href="/CuyKerja/Hirer/ListApplicant" class="{{request()->is('CuyKerja/Hirer/ListApplicant') ? 'nav-link active': 'nav-link fw-bold'}}">@lang('menubar2.applicant_lists')</a>
+            </li>
+            <li class="nav-item dropdown px-4">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    @lang('menubar.language')
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="{{ url('CuyKerja/locale/en') }}">English</a>
+                    <a class="dropdown-item" href="{{ url('CuyKerja/locale/id') }}">Indonesia</a>
+                </ul>
             </li>
           </ul>
       </div>
     @auth
         <form action="{{route('logout')}}" method='post' class="inline">
             @csrf
-            <button type="submit" class="btn custom-login-btn">Logout</button>
+            <button type="submit" class="btn custom-login-btn">@lang('menubar2.logout')</button>
         </form>
     @endauth
     </div>
@@ -35,7 +43,7 @@
       }
   
       .nav-item a {
-          margin: 0 25px;
+          /* margin: 0 25px; */
       }
       
       .custom-login-btn {

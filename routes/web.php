@@ -80,5 +80,6 @@ Route::prefix('/CuyKerja')->group(function(){
       Route::delete('/ListCategories/delete/{id}', [Controllers\CategoriesController::class, 'destroy'])->name('admin.deletecategories')->middleware('auth', CheckAdminRole::class);
    });
 
+   Route::get('locale/{lang}', [Controllers\LocaleController::class, 'setLocale']);
 });
 

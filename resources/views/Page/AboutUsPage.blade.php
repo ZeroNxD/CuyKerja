@@ -21,7 +21,7 @@
             <h2 style="font-size:20px;">2602175815</h2>
             <h3 style='font-size:15px;'>BINUS University</h3>
             <h3 style='font-size:15px;'>Computer Science</h3>
-            <h4 style='font-size:20px;'>📧 : @gmail.com </h4>
+            <h4 style='font-size:20px;'>📧 : ivanafrizal1@gmail.com </h4>
         </div>
 
         <div class="col-4" style="background: #fcfcfc; padding:30px; border-radius:20px;">
@@ -39,10 +39,18 @@
             <h2 style="font-size:20px;">2602144942</h2>
             <h3 style='font-size:15px;'>BINUS University</h3>
             <h3 style='font-size:15px;'>Computer Science</h3>
-            <h4 style='font-size:20px;'>📧 : @gmail.com </h4>
+            <h4 style='font-size:20px;'>📧 : nicholaswenderlim22@gmail.com </h4>
         </div>
     </div>
 
 @endsection
 
 @include('Style.AboutUs')
+
+<style>
+     footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+</style>

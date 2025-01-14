@@ -7,20 +7,29 @@
     <div class="collapse navbar-collapse">
         <ul class="navbar-nav mx-auto">
             <li class="nav-item px-4">
-                <a href="/CuyKerja" class="{{request()->is('CuyKerja') ? 'nav-link active': 'nav-link fw-bold'}}">Home</a>
+                <a href="/CuyKerja" class="{{request()->is('CuyKerja') ? 'nav-link active': 'nav-link fw-bold'}}">@lang('menubar.home')</a>
             </li>
             <li class="nav-item px-4">
-                <a href="/CuyKerja/List" class="{{request()->is('CuyKerja/List') ? 'nav-link active': 'nav-link fw-bold'}}">Jobs List</a>
+                <a href="/CuyKerja/List" class="{{request()->is('CuyKerja/List') ? 'nav-link active': 'nav-link fw-bold'}}">@lang('menubar.jobs_list')</a>
             </li>
             <li class="nav-item px-4">
-                <a href="/CuyKerja/Categories" class="{{request()->is('CuyKerja/Categories') ? 'nav-link fw-bold active': 'nav-link fw-bold'}}">Categories</a>
+                <a href="/CuyKerja/Categories" class="{{request()->is('CuyKerja/Categories') ? 'nav-link fw-bold active': 'nav-link fw-bold'}}">@lang('menubar.categories')</a>
             </li>
             <li class="nav-item px-4">
-                <a href="/CuyKerja/AboutUs" class="{{request()->is('CuyKerja/AboutUs') ? 'nav-link fw-bold active': 'nav-link fw-bold'}}">About Us</a>
+                <a href="/CuyKerja/AboutUs" class="{{request()->is('CuyKerja/AboutUs') ? 'nav-link fw-bold active': 'nav-link fw-bold'}}">@lang('menubar.about_us')</a>
             </li>
 
             <li class="nav-item px-4">
-                <a href="{{route('Applicant.index')}}" class="{{request()->is('CuyKerja/Applicant') ? 'nav-link fw-bold active': 'nav-link fw-bold'}}">History Applied Jobs</a>
+                <a href="{{route('Applicant.index')}}" class="{{request()->is('CuyKerja/Applicant') ? 'nav-link fw-bold active': 'nav-link fw-bold'}}">@lang('menubar.history_applied_jobs')</a>
+            </li>
+            <li class="nav-item dropdown px-4">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    @lang('menubar.language')
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="{{ url('CuyKerja/locale/en') }}">English</a>
+                    <a class="dropdown-item" href="{{ url('CuyKerja/locale/id') }}">Indonesia</a>
+                </ul>
             </li>
         </ul>
     </div>
@@ -28,16 +37,16 @@
     @auth
         {{-- Untuk JobSeeker --}}
         <h3 style="font-size: 15px; font-weight: bold;">
-            Welcome, {{auth()->user()->name}}
+            @lang('menubar.welcome'), {{auth()->user()->name}}
         </h3>
 
         <form action="{{route('logout')}}" method='post' class="inline">
             @csrf
-            <button type="submit" class="btn custom-login-btn">Logout</button>
+            <button type="submit" class="btn custom-login-btn">@lang('menubar.logout')</button>
         </form>
     @else
-        <button class="btn custom-login-btn" onclick="window.location.href='/CuyKerja/Register'">Register</button>
-        <button class="btn custom-login-btn" onclick="window.location.href='/CuyKerja/Login'">Login</button>
+        <button class="btn custom-login-btn" onclick="window.location.href='/CuyKerja/Register'">@lang('menubar.register')</button>
+        <button class="btn custom-login-btn" onclick="window.location.href='/CuyKerja/Login'">@lang('menubar.login')</button>
     @endauth
 
   </div>
@@ -51,7 +60,7 @@
     }
 
     .nav-item a {
-        margin: 0 25px;
+        /* margin: 0 25px; */
     }
 
     .custom-login-btn {
