@@ -32,8 +32,9 @@
                             @endif
                         </td>
                         <td>{{$items->description}}</td>
+                    </tr>
                     @endforeach
-                </tr>
+                
             </table>
         @else
             <h1>There's no Applicant that you've made</h1>
