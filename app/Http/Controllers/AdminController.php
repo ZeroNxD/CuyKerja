@@ -26,7 +26,7 @@ class AdminController extends Controller
         $job = HireJob::with(['users.companies', 'categories', 'jobtypes'])->find($id);
 
         if($job){
-            return view('Admin.DetailJob', compact('job'));
+            return view('admin.DetailJob', compact('job'));
         } else {
             abort(404);
         }

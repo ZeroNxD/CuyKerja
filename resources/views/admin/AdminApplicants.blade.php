@@ -1,7 +1,7 @@
 @extends('\Layout.Master3')
 
 @section('content')
-    <h1 style="font-weight: bold; margin-bottom: 20px; text-decoration: underline;">Welcome to the List of Jobs Panel</h1>
+    <h1 style="font-weight: bold; margin-bottom: 20px; text-decoration: underline;">Welcome to the List of Applicants Panel</h1>
 
     <table class="table">
         @unless(count($allapplicants) == 0)

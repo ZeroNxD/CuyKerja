@@ -106,7 +106,7 @@
                     <p class="text-red-500 text-xs" style="color: red; font-weight: bold;">{{$message}}</p>
                 @enderror
             
-                <button type='submit'>Update The Job's Detail</button>
+                <button type='submit' style="background-color: #4CAF50;  color: white; padding: 10px 20px; font-size: 16px; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s ease, transform 0.2s ease;">Update The Job's Detail</button>
             </form>
         </div>
     </div>

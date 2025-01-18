@@ -33,7 +33,7 @@ class CategoriesController extends Controller
     }
 
     public function create(){
-        return view('Admin.AdminCreateCategories');
+        return view('admin.AdminCreateCategories');
     }
 
     public function store(Request $request){
@@ -56,7 +56,7 @@ class CategoriesController extends Controller
 
     public function edit($id){
         $Category = Category::findOrFail($id);
-        return view('Admin.AdminEditCategories', compact('Category'));
+        return view('admin.AdminEditCategories', compact('Category'));
     }
 
     public function update(Request $request, $id){

@@ -22,7 +22,7 @@
             <textarea name="description" id="description" class="form-control" cols="30" rows="10">{{ $Applicant->description }}</textarea>
         </div>
 
-        <button type='submit'>Save Your Changes</button>
+        <button type='submit' style="background-color: #4CAF50;  color: white; padding: 10px 20px; font-size: 16px; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s ease, transform 0.2s ease;">Save Your Changes</button>
     </form>
 @endsection
 
